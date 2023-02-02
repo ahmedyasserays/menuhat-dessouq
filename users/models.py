@@ -3,8 +3,8 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from uuid import uuid4
 
 from .managers import UserManager
-# Create your models here.
 
+# Create your models here.
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -35,7 +35,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         help_text="Designates whether this user should be treated as active. "
         "Unselect this instead of deleting accounts.",
     )
-    
+
     def get_short_name(self):
         return self.first_name
 
@@ -43,5 +43,5 @@ class User(AbstractBaseUser, PermissionsMixin):
         if not self.first_name and not self.last_name:
             return self.email
         return self.first_name + " " + self.last_name
-    
+
     get_full_name.short_description = "Full Name"
